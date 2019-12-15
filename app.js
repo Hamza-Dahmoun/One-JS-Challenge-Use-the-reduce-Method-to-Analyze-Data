@@ -121,19 +121,16 @@ var watchList = [
 ];
 
 function getRating(watchList) {
-    // Add your code below this line
+    // --------------------- Add your code below this line
     var averageRating;
-    //this  array hold only movies directed by Christopher Nolan
+    //this array hold only movies directed by Christopher Nolan
     const christopherNolanMovies = watchList.filter(movie => movie.Director == "Christopher Nolan");
     //console.log(christopherNolanMovies);
-    //this array holds only IMDBratings of christopherNolanMovies
-    const ratings = christopherNolanMovies.map(movie => parseFloat(movie.imdbRating));
-    console.log(ratings);
-    const avg = ratings.reduce((sum, rati) => {
-        sum + rati
-    }, 0) / ratings.length;
-    //console.log(avg);
-    // Add your code above this line
+    //Now we'll use 'reduce' as a 'map' function, we'll use an accumulator 'sum' which its initial value us '0', and then start adding imdbRating of each movie
+    //once the addition is finished inside the 'reduce' method, we'll divide the resulted sum on the number of christopherNolanMovies elements 
+    const avg = christopherNolanMovies.reduce((sum, movie) => sum+parseFloat(movie.imdbRating), 0)/christopherNolanMovies.length;
+    averageRating = avg;
+    // --------------------- Add your code above this line
     return averageRating;
 }
-  //console.log(getRating(watchList));
+  console.log(getRating(watchList));
